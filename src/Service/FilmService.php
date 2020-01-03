@@ -3,10 +3,14 @@ namespace App\Service;
 
 use App\Repository\FilmRepository;
 
+/**
+ * Class FilmService
+ * @package App\Service
+ */
 final class FilmService
 {
     /**
-     * @var DocumentRepository
+     * @var FilmRepository
      */
     private $repository;
 

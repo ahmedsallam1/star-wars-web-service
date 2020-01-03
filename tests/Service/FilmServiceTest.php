@@ -4,10 +4,14 @@ namespace App\Tests\Repository;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use App\Service\FilmService;
 
+/**
+ * Class FilmServiceTest
+ * @package App\Tests\Repository
+ */
 class FilmServiceTest extends KernelTestCase
 {
     /**
-     * @var App\Service\FilmService
+     * @var FilmService
      */
     private $service;
 

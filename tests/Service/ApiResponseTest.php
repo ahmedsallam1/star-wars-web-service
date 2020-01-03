@@ -5,10 +5,14 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use App\Service\ApiResponse;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class ApiResponseTest
+ * @package App\Tests\Repository
+ */
 class ApiResponseTest extends KernelTestCase
 {
     /**
-     * @var App\Service\ApiResponse
+     * @var ApiResponse
      */
     private $service;
 
@@ -27,7 +31,7 @@ class ApiResponseTest extends KernelTestCase
     /**
      * @test
      */
-    public function test_set_response()
+    public function testSetResponse()
     {
         $this->service->setResponse(new Response());
 
@@ -37,7 +41,7 @@ class ApiResponseTest extends KernelTestCase
     /**
      * @test
      */
-    public function test_set_message()
+    public function testSetMessage()
     {
         $message = 'test';
 
@@ -49,7 +53,7 @@ class ApiResponseTest extends KernelTestCase
     /**
      * @test
      */
-    public function test_set_status_code()
+    public function testSetStatusCode()
     {
         $code = 200;
 
@@ -61,7 +65,7 @@ class ApiResponseTest extends KernelTestCase
     /**
      * @test
      */
-    public function test_set_error()
+    public function testSetError()
     {
         $error = 'error';
 
@@ -74,7 +78,7 @@ class ApiResponseTest extends KernelTestCase
     /**
      * @test
      */
-    public function test_set_data()
+    public function testSetData()
     {
         $data = [
             'id'=> 1,
@@ -89,13 +93,14 @@ class ApiResponseTest extends KernelTestCase
     /**
      * @test
      */
-    public function test_to_json()
+    public function testToJson()
     {
         $response = $this->service->toJson();
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertJson($this->service->toJson()->getContent());
     }
+
     /**
      * {@inheritDoc}
      */

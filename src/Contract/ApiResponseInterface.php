@@ -1,10 +1,14 @@
 <?php
 namespace App\Contract;
 
-interface ApiResponseInterface 
+/**
+ * Interface ApiResponseInterface
+ * @package App\Contract
+ */
+interface ApiResponseInterface
 {
-	/**
-	 * @return string
-	 */
-	public function toJson();
+    /**
+     * @return mixed
+     */
+    public function toJson();
 }

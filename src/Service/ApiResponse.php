@@ -4,35 +4,40 @@ namespace App\Service;
 use App\Contract\ApiResponseInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use App\Factory\HttpResponseFactory;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class ApiResponse
+ * @package App\Service
+ */
 final class ApiResponse implements ApiResponseInterface
 {
-    /** 
+    /**
      * @var Response
      */
     private $response;
 
-    /** 
+    /**
      * @var SerializerInterface
      */
     private $serializer;
 
-    /** 
+    /**
      * @var mixed
      */
     private $data;
 
-    /** 
+    /**
      * @var string|null
      */
     private $message;
 
-    /** 
+    /**
      * @var mixed
      */
     private $error;
 
-    /** 
+    /**
      * @var int
      */
     private $statusCode;
@@ -49,8 +54,6 @@ final class ApiResponse implements ApiResponseInterface
     }
 
     /**
-     * @param array $data
-     *
      * @return string
      */
     public function toJson()

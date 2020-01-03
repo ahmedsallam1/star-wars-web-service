@@ -8,7 +8,7 @@ use Doctrine\ODM\MongoDB\Aggregation\Builder as AggregationBuilder;
 class FilmRepositoryTest extends KernelTestCase
 {
     /**
-     * @var App\Repository\FilmRepository
+     * @var FilmRepository
      */
     private $repository;
 

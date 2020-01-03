@@ -4,6 +4,8 @@ namespace App\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
+ * Class Film
+ * @package App\Document
  * @MongoDB\Document(collection="films")
  */
 class Film
@@ -169,6 +171,4 @@ class Film
 
         return $this;
     }
-
-
 }

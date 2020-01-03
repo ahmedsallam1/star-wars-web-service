@@ -1,9 +1,14 @@
 <?php
 namespace App\EventListener;
-use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+
+use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use App\Contract\ApiResponseInterface;
 
+/**
+ * Class ExceptionListener
+ * @package App\EventListener
+ */
 class ExceptionListener
 {
     /**
@@ -20,11 +25,11 @@ class ExceptionListener
     }
 
     /**
-     * @param GetResponseForExceptionEvent $event
+     * @param ExceptionEvent $event
      */
-    public function onKernelException(GetResponseForExceptionEvent $event)
+    public function onKernelException(ExceptionEvent $event)
     {
-        $exception = $event->getException();
+        $exception = $event->getThrowable();
         $request   = $event->getRequest();
 
         if (in_array('application/json', $request->getAcceptableContentTypes())) {
@@ -32,18 +37,17 @@ class ExceptionListener
             $event->setResponse($response);
         }
     }
-    
+
     /**
      * Creates the ApiResponse from any Exception
      *
-     * @param \Exception $exception
-     *
-     * @return ApiResponse
+     * @param \Throwable $exception
+     * @return mixed
      */
-    private function createApiResponse(\Exception $exception)
+    private function createApiResponse(\Throwable $exception)
     {
-        $statusCode = $exception instanceof HttpExceptionInterface 
-            ? $exception->getStatusCode() 
+        $statusCode = $exception instanceof HttpExceptionInterface
+            ? $exception->getStatusCode()
             : $this->apiResponse->getResponse()::HTTP_INTERNAL_SERVER_ERROR
         ;
 

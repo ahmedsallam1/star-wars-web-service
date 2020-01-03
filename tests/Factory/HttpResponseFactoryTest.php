@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 class HttpResponseFactoryTest extends KernelTestCase
 {
     /**
-     * @var App\Factory\HttpResponseFactory
+     * @var HttpResponseFactory
      */
     private $factory;
 
@@ -27,11 +27,11 @@ class HttpResponseFactoryTest extends KernelTestCase
     /**
      * @test
      */
-    public function test_create()
+    public function testCreate()
     {
         $factory = $this->factory::create();
 
-        $this->assertInstanceOf(Response::class,  $factory);
+        $this->assertInstanceOf(Response::class, $factory);
     }
 
     /**
