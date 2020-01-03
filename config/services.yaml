@@ -4,8 +4,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    env(MONGODB_URL): 'mongodb://candidate:PrototypeRocks123654@ds345028.mlab.com:45028/star-wars'
-    env(MONGODB_DB): 'star-wars'
+    env(MONGODB_URL): ''
+    env(MONGODB_DB): ''
 
 services:
     # default configuration for services in *this* file
@@ -24,6 +24,26 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+    sensio_framework_extra.view.listener:
+        alias: Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener
+
+    App\EventListener\ExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
+    App\Repository\FilmRepository:
+        public: true
+
+    App\Service\FilmService:
+        public: true
+
+    App\Service\ApiResponse:
+        public: true
+
+    App\Factory\HttpResponseFactory:
+        public: true
+
+    # Doctrine\Common\Persistence\ObjectManager: '@doctrine.orm.default_entity_manager'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
