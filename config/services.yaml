@@ -6,8 +6,6 @@
 parameters:
     env(MONGODB_URL): ''
     env(MONGODB_DB): ''
-    mongo_server: 'mongodb://candidate:PrototypeRocks123654@ds345028.mlab.com:45028/star-wars'
-    mongo_db: 'star-wars'
 
 services:
     # default configuration for services in *this* file
@@ -33,6 +31,9 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
 
+    App\Repository\FilmRepository:
+        public: true
+        
     # Doctrine\Common\Persistence\ObjectManager: '@doctrine.orm.default_entity_manager'
 
     # add more service definitions when explicit configuration is needed

@@ -62,9 +62,9 @@ final class FilmRepository
 		$aggregationBuilder
 			->project()
 			->includeFields(['title'])
-        	->field('openingCrawlLength')
-        	->expression($aggregationBuilder->expr()->strLenBytes('$openingCrawl'))
-        	->sort('openingCrawlLength', 'desc')
+        	->field($field."Length")
+        	->expression($aggregationBuilder->expr()->strLenBytes("$$field"))
+        	->sort($field."Length", 'desc')
         	->limit(1)
         ;
 
