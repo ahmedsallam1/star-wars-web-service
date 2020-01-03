@@ -43,6 +43,15 @@ services:
     App\Factory\HttpResponseFactory:
         public: true
 
+    App\Repository\PeopleRepository:
+        public: true
+
+    App\Service\PeopleService:
+        public: true
+
+    App\Service\CharacterService:
+        public: true
+
     # Doctrine\Common\Persistence\ObjectManager: '@doctrine.orm.default_entity_manager'
 
     # add more service definitions when explicit configuration is needed
