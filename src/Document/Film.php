@@ -71,6 +71,13 @@ class Film
      */
     private $title;
 
+    /**
+     * @var array
+     *
+     * @MongoDB\Field(type="bin_bytearray")
+     */
+    private  $characters;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,5 +177,10 @@ class Film
         $this->title = $title;
 
         return $this;
+    }
+
+    public function getCharacters(): array
+    {
+        return $this->characters;
     }
 }
