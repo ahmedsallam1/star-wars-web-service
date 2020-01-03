@@ -41,10 +41,10 @@ final class FilmRepository
             }
         }
 
-        $aggregationBuilder
-            ->project()
-            ->includeFields(['title'])
-        ;
+         $aggregationBuilder
+             ->project()
+             ->includeFields(['title', 'characters'])
+         ;
 
         return $aggregationBuilder;
     }
@@ -67,6 +67,30 @@ final class FilmRepository
             ->expression($aggregationBuilder->expr()->strLenBytes("$$field"))
             ->sort($field."Length", 'desc')
             ->limit(1)
+        ;
+
+        return $aggregationBuilder;
+    }
+
+    /**
+     * Add sort by specific field descendingly
+     * limited by 1 result
+     *
+     * @param AggregationBuilder $aggregationBuilder
+     * @param string $field
+     *
+     * @return AggregationBuilder
+     */
+    private function scopeMostAppeared(AggregationBuilder $aggregationBuilder, string $field) : AggregationBuilder
+    {
+        $aggregationBuilder
+            ->unwind("$$field")
+            ->group()
+            ->field("id")
+            ->expression("$$field")
+            ->field($field."Count")
+            ->sum(1)
+            ->sort($field."Count", "desc")
         ;
 
         return $aggregationBuilder;

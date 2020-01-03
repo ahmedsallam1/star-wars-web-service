@@ -1,0 +1,11 @@
+Character:
+  type: object
+  config:
+    description: "A character"
+    fields:
+      id:
+        type: "Int!"
+        description: "The unique ID of the character."
+      name:
+        type: "String"
+        description: "Name of the character"

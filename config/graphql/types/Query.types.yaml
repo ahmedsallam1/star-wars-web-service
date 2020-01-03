@@ -1,0 +1,12 @@
+Query:
+  type: object
+  config:
+    description: "Character Repository"
+    fields:
+      character:
+        type: "Character"
+        args:
+            isMostAppeared:
+              description: "Show most appeared character"
+              type: "Boolean"
+        resolve: "@=resolver('Character', [args])"

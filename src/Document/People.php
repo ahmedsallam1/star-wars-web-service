@@ -11,7 +11,12 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 class People
 {
     /**
-     * @MongoDB\Id(strategy="INCREMENT")
+     * @MongoDB\Id
+     */
+    protected $objId;
+
+    /**
+     * @MongoDB\Field(type="integer")
      */
     protected $id;
 
@@ -22,16 +27,26 @@ class People
      */
     private $name;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return null|string
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param null|string $name
+     * @return People
+     */
     public function setName(?string $name): self
     {
         $this->name = $name;

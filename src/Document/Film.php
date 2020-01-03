@@ -76,7 +76,7 @@ class Film
      *
      * @MongoDB\Field(type="bin_bytearray")
      */
-    private  $characters;
+    private $characters;
 
     public function getId(): ?int
     {
