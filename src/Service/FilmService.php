@@ -23,9 +23,9 @@ final class FilmService
      *
      * @param array $criteria
      *
-     * @return Query
+     * @return array
      */
-    public function getOneBy(array $criteria = [])
+    public function getOneBy(array $criteria = []) : array
     {
         return $this->repository->findOneBy($criteria)->execute()->current();
     }

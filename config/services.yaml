@@ -33,7 +33,9 @@ services:
 
     App\Repository\FilmRepository:
         public: true
-        
+
+    App\Service\FilmService:
+        public: true
     # Doctrine\Common\Persistence\ObjectManager: '@doctrine.orm.default_entity_manager'
 
     # add more service definitions when explicit configuration is needed
