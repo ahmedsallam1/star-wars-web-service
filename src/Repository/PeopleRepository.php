@@ -46,9 +46,7 @@ final class PeopleRepository
     }
 
     /**
-     * Add sort by specific field descendingly
-     * limited by 1 result
-     *
+     * add where `id` field equals specific id
      * @param QueryBuilder $queryBuilder
      * @param  int $id
      *
