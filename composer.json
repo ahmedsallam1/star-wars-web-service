@@ -22,9 +22,7 @@
         "symfony/orm-pack": "^1.0",
         "symfony/serializer": "4.4.*",
         "symfony/twig-bundle": "4.4.*",
-        "symfony/yaml": "4.4.*"
-    },
-    "require-dev": {
+        "symfony/yaml": "4.4.*",
         "overblog/graphiql-bundle": "^0.2.0",
         "symfony/phpunit-bridge": "^5.0"
     },
