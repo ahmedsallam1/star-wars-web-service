@@ -51,7 +51,6 @@ final class FilmRepository
 
     /**
      * Add sort by specific field descendingly
-     * limited by 1 result
      *
      * @param AggregationBuilder $aggregationBuilder
      * @param string $field
@@ -66,7 +65,6 @@ final class FilmRepository
             ->field($field."Length")
             ->expression($aggregationBuilder->expr()->strLenBytes("$$field"))
             ->sort($field."Length", 'desc')
-            ->limit(1)
         ;
 
         return $aggregationBuilder;
@@ -74,7 +72,6 @@ final class FilmRepository
 
     /**
      * Add sort by specific field descendingly
-     * limited by 1 result
      *
      * @param AggregationBuilder $aggregationBuilder
      * @param string $field
@@ -90,8 +87,26 @@ final class FilmRepository
             ->expression("$$field")
             ->field($field."Count")
             ->sum(1)
-            ->sort($field."Count", "desc")
+            ->sort($field."Count", 'desc')
+            ->match()
+            ->field($field."Count")
+            ->equals(6)
         ;
+
+        return $aggregationBuilder;
+    }
+
+    /**
+     * Add limit
+     *
+     * @param AggregationBuilder $aggregationBuilder
+     * @param int $limit
+     *
+     * @return AggregationBuilder
+     */
+    private function scopeLimit(AggregationBuilder $aggregationBuilder, int $limit) : AggregationBuilder
+    {
+        $aggregationBuilder->limit($limit);
 
         return $aggregationBuilder;
     }

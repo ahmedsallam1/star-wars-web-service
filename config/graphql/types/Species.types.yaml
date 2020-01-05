@@ -1,0 +1,14 @@
+Species:
+  type: object
+  config:
+    description: "Species"
+    fields:
+      id:
+        type: "Int!"
+        description: "The unique ID of the Species."
+      name:
+        type: "String"
+        description: "Name of the Species"
+      peopleCount:
+        type: "Int"
+        description: "Number of people"
